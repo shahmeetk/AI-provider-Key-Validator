@@ -2,6 +2,8 @@
 
 A Streamlit application to validate API keys for various LLM providers and check their quota/usage information. This tool helps developers and teams manage their LLM API keys, check quotas, and understand available models across multiple providers.
 
+![API Validation Process](images/DataFlow.png)
+
 ## Features
 
 - Validate API keys for 15+ LLM providers:
@@ -134,6 +136,8 @@ For each provider, you'll find:
 
 The application follows a modular layered architecture:
 
+![Architecture Diagram](images/Architecture.png)
+
 1. **UI Layer** (ui/)
    - Main Streamlit application (main_app.py)
    - Single Key Validation (single_key.py)
@@ -161,6 +165,10 @@ The application follows a modular layered architecture:
 
 6. **External Systems**
    - Various LLM Provider APIs
+
+### Modular Structure
+
+![Modular Structure](images/Modular%20Structure.png)
 
 ### Data Flow
 
@@ -209,7 +217,7 @@ The project follows a modular architecture:
 
 ## Documentation
 
-- **Architecture**: [Architecture Diagram](docs/architecture_diagram.txt), [Data Flow](docs/data_flow_diagram.txt), [Structure](docs/modular_structure.md)
+- **Architecture**: See the [Architecture Diagram](#architecture) and [Data Flow](#data-flow) sections above
 - **Providers**: [Categories](docs/provider_categories.md), [Information Structure](docs/provider_info_structure.md), [Key Detection](docs/api_key_detection.md)
 - **Development**: [Adding Providers](docs/adding_new_provider.md), [Validator Implementation](docs/validator_implementation.md)
 
