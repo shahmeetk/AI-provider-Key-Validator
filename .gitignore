@@ -37,3 +37,6 @@ validation_history.db
 # OS specific files
 .DS_Store
 Thumbs.db
+
+# Blog repository
+blogs/
