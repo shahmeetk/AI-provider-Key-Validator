@@ -1,20 +1,36 @@
-# LinkedIn Post: LLM API Key Validator
+# LinkedIn Post: LLM API Key Validator - Enhanced Edition
 
-🚀 **Just Released: LLM API Key Validator - A Must-Have Tool for AI Developers**
+## 🔑 **Introducing the Enhanced LLM API Key Validator: Streamlining AI Development Workflows**
 
-Managing API keys across multiple LLM providers is now effortless! I'm excited to share my latest open-source project: a comprehensive Streamlit application that validates API keys and displays quota information for OpenAI, Anthropic, Groq, Mistral, and many more providers.
+As AI development increasingly relies on multiple language models, managing API keys across different providers has become a critical challenge. I'm thrilled to announce significant enhancements to my open-source LLM API Key Validator—a robust solution designed to simplify this aspect of the AI development lifecycle.
 
-✅ **Key Features:**
-- Automatic provider detection from key format
-- Detailed quota and usage information
-- Available models and capabilities
-- Bulk validation for multiple keys
-- History tracking for monitoring usage
+![Architecture Diagram](https://github.com/shahmeetk/AI-provider-Key-Validator/raw/main/images/Architecture.png)
 
-Whether you're a solo developer juggling multiple providers or a team managing shared resources, this tool will save you time and prevent unexpected API failures.
+## 💡 **Latest Enhancements:**
 
-Check out the blog post for a deep dive into the architecture and implementation: [link to blog post]
+- **Session-based validation history**: Track your key validations securely within your browser session
+- **Enhanced provider comparison**: Interactive tables to compare features across 15+ LLM providers
+- **Improved security**: Clear disclaimers and zero key storage policy for maximum data protection
+- **Comprehensive model information**: Detailed display of available models, context windows, and capabilities
+- **Streamlined UI**: More intuitive interface with better error handling
 
-GitHub Repository: https://github.com/shahmeetk/AI-provider-Key-Validator
+## 🛠️ **Core Features:**
 
-#AITools #MachineLearning #OpenSource #LLM #APIManagement #Streamlit #PythonDevelopment
+- **Multi-provider support**: Validate keys for OpenAI, Anthropic, Claude, Groq, Mistral, Google AI, Cohere, and more
+- **Intelligent key detection**: Automatic provider identification from key format
+- **Quota visualization**: Clear display of usage limits, rate limits, and available tokens
+- **Bulk validation**: Process multiple keys simultaneously via CSV upload
+- **Provider information hub**: Comprehensive details on pricing, free tiers, and key acquisition
+
+![Modular Structure](https://github.com/shahmeetk/AI-provider-Key-Validator/raw/main/images/Modular%20Structure.png)
+
+The tool is built with a modular architecture that makes it easily extensible for new providers. Whether you're a solo developer experimenting with different models, a startup optimizing API costs, or an enterprise managing team access, this validator helps prevent unexpected API failures and budget overruns.
+
+## 🔗 **Try it today:**
+
+- **Live Demo**: [https://ai-provider-key-validator.streamlit.app/](https://ai-provider-key-validator.streamlit.app/)
+- **GitHub Repository**: [https://github.com/shahmeetk/AI-provider-Key-Validator](https://github.com/shahmeetk/AI-provider-Key-Validator)
+
+I'd love to hear your feedback and feature suggestions. How are you managing your LLM API keys today?
+
+\#AIEngineering \#MachineLearning \#OpenSource \#LLMOps \#APIManagement \#Streamlit \#PythonDevelopment \#AITools \#GenerativeAI \#DeveloperTools \#TechInnovation
