@@ -2,8 +2,6 @@
 
 A Streamlit application to validate API keys for various LLM providers and check their quota/usage information. This tool helps developers and teams manage their LLM API keys, check quotas, and understand available models across multiple providers.
 
-![API Validation Process](images/DataFlow.png)
-
 ## Features
 
 - Validate API keys for 15+ LLM providers:
@@ -166,9 +164,11 @@ The application follows a modular layered architecture:
 6. **External Systems**
    - Various LLM Provider APIs
 
-### Modular Structure
+### API Validation Process
 
-![Modular Structure](images/Modular%20Structure.png)
+The diagram below illustrates the API validation process flow:
+
+![API Validation Process](images/DataFlow.png)
 
 ### Data Flow
 
@@ -182,7 +182,11 @@ The application follows a modular layered architecture:
 
 ## Project Structure
 
-The project follows a modular architecture:
+The project follows a modular architecture as shown in the diagram below:
+
+![Modular Structure](images/Modular%20Structure.png)
+
+### File Organization
 
 - `main.py`: Main entry point for the Streamlit application
 - `core/`: Core components and interfaces
@@ -211,13 +215,18 @@ The project follows a modular architecture:
 - `data/`: Data files
   - `provider_info.json`: Provider information and metadata
   - `history.json`: Validation history
+- `images/`: Diagrams and screenshots
+  - `Architecture.png`: System architecture diagram
+  - `DataFlow.png`: API validation process flow
+  - `Modular Structure.png`: Code organization diagram
 - `run.py`, `run.sh`, `run.bat`: Scripts for running the app with virtual environment support
 - `logs/`: Directory for log files
-- `docs/`: Documentation and screenshots
+- `docs/`: Documentation and reference materials
 
 ## Documentation
 
-- **Architecture**: See the [Architecture Diagram](#architecture) and [Data Flow](#data-flow) sections above
+- **Architecture**: See the [Architecture Diagram](#architecture), [API Validation Process](#api-validation-process), and [Data Flow](#data-flow) sections above
+- **Project Structure**: See the [Project Structure](#project-structure) section with the modular organization diagram
 - **Providers**: [Categories](docs/provider_categories.md), [Information Structure](docs/provider_info_structure.md), [Key Detection](docs/api_key_detection.md)
 - **Development**: [Adding Providers](docs/adding_new_provider.md), [Validator Implementation](docs/validator_implementation.md)
 
