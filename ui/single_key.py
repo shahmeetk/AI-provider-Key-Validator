@@ -118,22 +118,30 @@ def display_quota_info(result: Dict[str, Any]) -> None:
             if "model_details" in result.get("quota_info", {}):
                 st.markdown("**Model Details:**")
                 for model in result["quota_info"]["model_details"]:
-                    # Handle both string models and dictionary models
-                    if isinstance(model, dict):
-                        model_name = model.get("id", "Unknown Model")
-                        with st.expander(model_name):
-                            for key, value in model.items():
-                                if key != "id":  # Skip ID since it's already in the expander title
-                                    # Format the key for display
-                                    display_key = key.replace("_", " ").title()
-                                    if isinstance(value, list):
-                                        st.markdown(f"**{display_key}:** {', '.join(str(v) for v in value)}")
-                                    else:
-                                        st.markdown(f"**{display_key}:** {value}")
-                    else:
-                        # If model is just a string
-                        with st.expander(str(model)):
-                            st.markdown("Basic model information")
+                    try:
+                        # Handle both string models and dictionary models
+                        if isinstance(model, dict):
+                            # Get model name safely with fallback
+                            model_name = str(model.get("id", "Unknown Model"))
+
+                            # Create expander with safe model name
+                            with st.expander(model_name):
+                                for key, value in model.items():
+                                    if key != "id":  # Skip ID since it's already in the expander title
+                                        # Format the key for display
+                                        display_key = key.replace("_", " ").title()
+                                        if isinstance(value, list):
+                                            st.markdown(f"**{display_key}:** {', '.join(str(v) for v in value)}")
+                                        else:
+                                            st.markdown(f"**{display_key}:** {value}")
+                        else:
+                            # If model is just a string
+                            with st.expander(str(model)):
+                                st.markdown("Basic model information")
+                    except Exception as e:
+                        # Log the error and continue with other models
+                        st.error(f"Error displaying model information: {str(e)}")
+                        continue
 
             # For backward compatibility
             if "special_models" in result and result["special_models"]:
