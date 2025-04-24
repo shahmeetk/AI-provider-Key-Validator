@@ -9,6 +9,7 @@ from core.validator import ValidatorFactory
 from utils.detection import ProviderDetector
 from utils.storage import Storage
 from utils.logger import app_logger
+from ui.history import add_to_history
 
 
 def validate_key(api_key: str, selected_provider: str) -> Dict[str, Any]:
@@ -117,15 +118,22 @@ def display_quota_info(result: Dict[str, Any]) -> None:
             if "model_details" in result.get("quota_info", {}):
                 st.markdown("**Model Details:**")
                 for model in result["quota_info"]["model_details"]:
-                    with st.expander(model.get("id", "Unknown Model")):
-                        for key, value in model.items():
-                            if key != "id":  # Skip ID since it's already in the expander title
-                                # Format the key for display
-                                display_key = key.replace("_", " ").title()
-                                if isinstance(value, list):
-                                    st.markdown(f"**{display_key}:** {', '.join(value)}")
-                                else:
-                                    st.markdown(f"**{display_key}:** {value}")
+                    # Handle both string models and dictionary models
+                    if isinstance(model, dict):
+                        model_name = model.get("id", "Unknown Model")
+                        with st.expander(model_name):
+                            for key, value in model.items():
+                                if key != "id":  # Skip ID since it's already in the expander title
+                                    # Format the key for display
+                                    display_key = key.replace("_", " ").title()
+                                    if isinstance(value, list):
+                                        st.markdown(f"**{display_key}:** {', '.join(str(v) for v in value)}")
+                                    else:
+                                        st.markdown(f"**{display_key}:** {value}")
+                    else:
+                        # If model is just a string
+                        with st.expander(str(model)):
+                            st.markdown("Basic model information")
 
             # For backward compatibility
             if "special_models" in result and result["special_models"]:
@@ -140,6 +148,9 @@ def display_quota_info(result: Dict[str, Any]) -> None:
 def create_single_key_page():
     """Create the single key validation page."""
     st.markdown('<h1 class="main-header">Validate a Single API Key</h1>', unsafe_allow_html=True)
+
+    # Add disclaimer
+    st.info("**Disclaimer:** API keys are never stored or cached on our servers. All validation is done in your browser session and keys are not retained after validation. This tool is designed with security and privacy in mind.")
 
     # Create two columns
     col1, col2 = st.columns([1, 1])
@@ -165,6 +176,9 @@ def create_single_key_page():
 
                     # Store the result in session state
                     st.session_state.validation_result = validation_result
+
+                    # Add to session history
+                    add_to_history(validation_result)
 
     with col2:
         # Display validation results

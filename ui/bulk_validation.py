@@ -8,6 +8,7 @@ from core.api_key import APIKey
 from core.validator import ValidatorFactory
 from utils.storage import Storage
 from ui.single_key import display_quota_info
+from ui.history import add_to_history
 
 
 def validate_keys_bulk(api_keys: List[APIKey]) -> List[Dict[str, Any]]:
@@ -59,6 +60,9 @@ def create_bulk_validation_page():
     """Create the bulk validation page."""
     st.markdown('<h1 class="main-header">Bulk Validation</h1>', unsafe_allow_html=True)
 
+    # Add disclaimer
+    st.info("**Disclaimer:** API keys are never stored or cached on our servers. All validation is done in your browser session and keys are not retained after validation. This tool is designed with security and privacy in mind.")
+
     st.markdown("""
     Upload a CSV file containing API keys to validate multiple keys at once.
 
@@ -91,6 +95,10 @@ def create_bulk_validation_page():
 
                     # Store the results in session state
                     st.session_state.bulk_validation_results = validation_results
+
+                    # Add each result to session history
+                    for result in validation_results:
+                        add_to_history(result)
 
                     # Create a downloadable CSV file
                     filename, csv_data = CSVProcessor.create_results_csv(api_keys)
