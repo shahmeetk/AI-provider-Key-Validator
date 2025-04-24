@@ -1,0 +1,34 @@
+# LLM API Key Validator Data Flow
+
+[User] -> [Input API Key] -> [Provider Detection]
+[Provider Detection] -> [Detected: Yes] -> [Select Validator]
+[Provider Detection] -> [Detected: No] -> [Manual Selection]
+[Select Validator] -> [Validate Key]
+[Manual Selection] -> [Validate Key]
+
+[Validate Key] -> [API Request] -> [Provider API]
+[Provider API] -> [Response] -> [Parse Results]
+
+[Parse Results] -> [Valid Key: Yes] -> [Extract Account Info]
+[Parse Results] -> [Valid Key: No] -> [Display Error]
+
+[Extract Account Info] -> {
+  [Models Information]
+  [Quota Information]
+  [Usage Details]
+  [Account Summary]
+}
+
+[Models Information, Quota Information, Usage Details, Account Summary] -> [Display Results]
+[Display Error] -> [Display Results]
+
+[Display Results] -> [Save to History]
+[Save to History] -> [History Storage]
+
+# Bulk Validation Flow
+[User] -> [Upload CSV] -> [Parse CSV]
+[Parse CSV] -> [For Each Key] -> [Provider Detection]
+[For Each Key] -> [Validate Key]
+[Validate Key] -> [Collect Results]
+[Collect Results] -> [Display Batch Results]
+[Display Batch Results] -> [Save to History]

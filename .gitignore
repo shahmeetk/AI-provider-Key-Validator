@@ -1,0 +1,39 @@
+# Python virtual environment
+.venv/
+venv/
+env/
+
+# Environment variables
+.env
+
+# Streamlit cache
+.streamlit/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Validation history
+validation_history.json
+validation_history.db
+
+# Logs
+*.log
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS specific files
+.DS_Store
+Thumbs.db
