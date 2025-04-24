@@ -37,31 +37,36 @@ def create_history_page():
         st.info("No validation history found in current session")
     else:
         # Add clear history button
-        if st.button("Clear History"):
+        clear_clicked = st.button("Clear History")
+        if clear_clicked:
             st.session_state.validation_history = []
-            st.experimental_rerun()
+            st.success("History cleared! Refresh the page to see the changes.")
 
-        # Group history by provider
-        providers = set(record["provider"] for record in history)
+        # Check if history is still available after clearing
+        if not st.session_state.validation_history:
+            st.info("No validation history found in current session")
+        else:
+            # Group history by provider
+            providers = set(record["provider"] for record in st.session_state.validation_history)
 
-        # Create tabs for each provider
-        if providers:
-            tabs = st.tabs([p.capitalize() for p in providers] + ["All"])
+            # Create tabs for each provider
+            if providers:
+                tabs = st.tabs([p.capitalize() for p in providers] + ["All"])
 
-            for i, provider in enumerate(list(providers) + ["all"]):
-                with tabs[i]:
-                    if provider == "all":
-                        provider_history = history
-                    else:
-                        provider_history = [r for r in history if r["provider"] == provider]
+                for i, provider in enumerate(list(providers) + ["all"]):
+                    with tabs[i]:
+                        if provider == "all":
+                            provider_history = st.session_state.validation_history
+                        else:
+                            provider_history = [r for r in st.session_state.validation_history if r["provider"] == provider]
 
-                    # Display history
-                    for record in provider_history:
-                        with st.expander(f"{record['provider'].capitalize()} - {record['timestamp']}"):
-                            st.markdown(f"**Status:** {'Valid' if record['is_valid'] else 'Invalid'}")
-                            st.markdown(f"**Message:** {record['message']}")
+                        # Display history
+                        for record in provider_history:
+                            with st.expander(f"{record['provider'].capitalize()} - {record['timestamp']}"):
+                                st.markdown(f"**Status:** {'Valid' if record['is_valid'] else 'Invalid'}")
+                                st.markdown(f"**Message:** {record['message']}")
 
-                            if record["is_valid"] and "summary" in record:
-                                st.markdown("### Account Summary")
-                                for key, value in record["summary"].items():
-                                    st.markdown(f"**{key.replace('_', ' ').title()}:** {value}")
+                                if record["is_valid"] and "summary" in record:
+                                    st.markdown("### Account Summary")
+                                    for key, value in record["summary"].items():
+                                        st.markdown(f"**{key.replace('_', ' ').title()}:** {value}")
