@@ -182,9 +182,15 @@ The diagram below illustrates the API validation process flow:
 
 ## Project Structure
 
-The project follows a modular architecture as shown in the diagram below:
+The project follows a modular architecture as shown in the diagrams below:
+
+### Modular Structure
 
 ![Modular Structure](images/Modular%20Structure.png)
+
+### Project Organization
+
+![Project Structure](images/Project%20Structure.png)
 
 ### File Organization
 
