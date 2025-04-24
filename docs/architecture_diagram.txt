@@ -1,5 +1,7 @@
 # LLM API Key Validator - Architecture Diagram
 
+
+
 +-------------------------+     +-------------------------+     +-------------------------+
 |                         |     |                         |     |                         |
 |  UI Layer               |     |  Core Layer             |     |  External Services      |

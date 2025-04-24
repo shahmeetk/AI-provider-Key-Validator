@@ -2,6 +2,14 @@
 
 The LLM API Key Validator follows a modular architecture that separates concerns and makes the codebase more maintainable.
 
+## Modular Structure Diagram
+
+![Modular Structure](../images/Modular%20Structure.png)
+
+## Project Organization
+
+![Project Structure](../images/Project%20Structure.png)
+
 ## Directory Structure
 
 ```bash
